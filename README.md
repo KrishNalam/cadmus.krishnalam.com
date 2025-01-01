@@ -35,3 +35,19 @@ I will be your Benevolent Dictator For Life (BDFL), but at a certain point **you
 - Setup styling, linters, and formatters - understand why we use Prettier, and the setup of ESLint
 - Do not take shortcuts, this is the time to learn the right way to do things
 - If you wrote it, you own it. That means any issues that arise from your code are your responsibility to fix. (exceptions will occur)
+
+Carpe Diem.
+
+
+
+## The Thought Process Behind this Project
+(This is not relevant, but I'm writing it for myself)
+The purpose of this project is really to level up all of our skills. Mridul knows Python, Java, but lacks any awareness of his development environment, and the ability to build something. Similiarly, Dave can code, I'm sure, but can he build a project in 48 hours that actually runs? Krish understands the basics of web development, but does he know why what is happening is happening? Or is he just guessing, based on what he's been told?
+
+You might ask, isn't web development easy? Shouldn't we be doing big Quant projects in Python? Yea, if it's so easy, I give you 36 hours, go build, deploy and maintain an SPA with a backend. You can't? Then you don't know web development. The other thing with web development, is that it's a great place to learn. Sure you won't use JS in your final exams, or even HTML, CSS, but you will learn fundementals.
+
+In my opinion, if you know the basics you will be able to transfer them anywhere. As an example, before my computer science exams, the only thing I do is brush up on the syntax of the language the exam is in, because I know and understand all the abilities of your average language. Similiarly, given any coding project, I know exactly how to tackle it, if it's a team project, I have a good development and collaboration environment.
+
+At the end of the day, the question really is, why not? Why not build something. Really, if it's so easy, it will take you no time, but at the bare minimum you will learn.
+
+P.S I don't give a crap about any of this, I just want an elite team to work with
