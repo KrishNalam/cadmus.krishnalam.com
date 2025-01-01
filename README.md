@@ -12,14 +12,15 @@ You will be responsible for:
 
 For each of your tasks:
 1. Read the code that is already there
-2. Write the code in a new branch named `feature/<task-name>`
+2. Write the code in a new branch named `person/<feature-name>`
 3. Create a pull request (assign it to me)
 4. Redo this process until the code is perfect and then push to main
 
 I will be your Benevolent Dictator For Life (BDFL), but at a certain point **you will be able to choose** what you want to build - especially because you will want to learn certain things. At some point we will stop building this, it isn't an infinite project.
 
 ## Goals
-- Setup an actual developer environment, using stock VsCode is useless, you might as well use Notepad
+- Setup an actual developer environment, using stock VSCode is useless, you might as well use Notepad
+  - Using stock VSCode is like using a stock tank, you can run it, but you're probably going to lose every game you play
 - Learn how to build *something* from **scratch** because you've never done it before
 - Understand fundemental concepts and apply them abstractly (understand, the *why* of React)
 - Learn to use Git(hub), HTML, CSS, JS, WebSockets, Node.js, SQLite, Express.js,  deployment platforms
@@ -33,3 +34,4 @@ I will be your Benevolent Dictator For Life (BDFL), but at a certain point **you
 - Only use branches, do not commit to main
 - Setup styling, linters, and formatters - understand why we use Prettier, and the setup of ESLint
 - Do not take shortcuts, this is the time to learn the right way to do things
+- If you wrote it, you own it. That means any issues that arise from your code are your responsibility to fix. (exceptions will occur)
