@@ -52,3 +52,17 @@ At the end of the day, why not build something? If it's easy, it'll take no time
 P.S. I don't care about any of this—I just want an elite team to work with.
 
 — Note: we need to go over bash and why it is important
+
+### The Question About the Tech Stack
+We are using really basic stuff to build fundemental skills but also to expose you from the inside out. Everything from here on out will be GIANT abstraction built on what we learn (I should know :sob:).
+Let me provide you a list of the **really basic** things we are learning, and what you can easily extend them to:
+- Node --> Bun, Flask
+- HTML + JS --> JSX
+- CSS --> TailwindCSS
+- Github --> Gitlab, any Git based platform
+- Express.js --> Fastify
+- SEO --> Next.js SEO stuff
+- SQLite --> most, if not all, SQL databases ([fun fact](https://avi.im/blag/2024/sqlite-facts/): there are over 1 trillion SQLite databases in use )
+- JS --> TS (it really is just JS but with types...)
+- Our deployment method --> most deployment methods
+- Our Auth --> any auth
