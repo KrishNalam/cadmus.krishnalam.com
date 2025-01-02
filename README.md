@@ -39,9 +39,7 @@ I will be your Benevolent Dictator For Life (BDFL), but at a certain point **you
 -   Set up and use linters, formatters, and styling tools like Prettier and ESLint.
 -   No shortcuts, this is the time to learn the proper way.
 -   If you wrote it, you own it. That means any issues that arise from your code are your responsibility to fix. (exceptions will occur)
-
 Carpe Diem.
-
 ## The Thought Process Behind this Project
 
 **(This is not relevant, but I'm writing it for myself)**
