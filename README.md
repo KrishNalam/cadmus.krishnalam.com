@@ -8,9 +8,9 @@ I will guide you through the process of building a chat application from scratch
 
 You will be responsible for:
 
--   reading each other's code and understanding it
--   writing good (clean) code
--   completing tasks in a timely manner
+-   Reading each other's code and understanding it
+-   Writing good (clean) code
+-   Completing tasks in a timely manner
 -   **NOT** using AI
 
 For each of your tasks:
