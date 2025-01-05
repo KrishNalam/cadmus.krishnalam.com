@@ -1,0 +1,8 @@
+{
+	"name": "Chat App",
+	"description": "Basic chat app",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}
