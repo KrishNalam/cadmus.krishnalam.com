@@ -1,14 +1,26 @@
 {
-  "name": "frontend",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^6.0.5"
-  }
+	"name": "frontend",
+	"private": true,
+	"version": "0.0.0",
+	"author": "Krish, Mohammad, Mridul, Dave",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"vite": "^6.0.7"
+	},
+	"description": "Front end for chat app",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cheatsoft/chat.git"
+	},
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cheatsoft/chat/issues"
+	},
+	"homepage": "https://github.com/cheatsoft/chat#readme"
 }
