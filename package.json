@@ -1,9 +1,9 @@
 {
-	"name": "chat",
+	"name": "cadmus",
 	"version": "1.0.0",
 	"description": "Basic chat app",
 	"scripts": {
-		"dev": "cd ./backend && node index.js && cd ../frontend && npm install && npm run dev"
+		"dev": "cd ./backend && npm install && npm run test && cd ../frontend && npm install && npm run dev"
 	},
 	"repository": {
 		"type": "git",
