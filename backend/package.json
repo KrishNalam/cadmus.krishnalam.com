@@ -1,0 +1,22 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "node index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cheatsoft/chat.git"
+	},
+	"author": "Krish, Mohammad, Mridul, Dave",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cheatsoft/chat/issues"
+	},
+	"homepage": "https://github.com/cheatsoft/chat#readme",
+	"description": "Back end for chat app",
+	"dependencies": {
+		"express": "^4.21.2"
+	}
+}
