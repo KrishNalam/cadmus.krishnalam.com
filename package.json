@@ -1,18 +1,18 @@
 {
-	"name": "cadmus",
-	"version": "1.0.0",
-	"description": "Basic chat app",
-	"scripts": {
-		"dev": "cd ./backend && npm install && npm run test && cd ../frontend && npm install && npm run dev"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/cheatsoft/chat.git"
-	},
-	"author": "Krish, Mohammad, Mridul, Dave",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/cheatsoft/chat/issues"
-	},
-	"homepage": "https://github.com/cheatsoft/chat#readme"
+    "name": "cadmus",
+    "version": "1.0.0",
+    "description": "Basic chat app",
+    "scripts": {
+        "dev": "cd ./backend && npm install && npm run dev && cd ../frontend && npm install && npm run dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cheatsoft/chat.git"
+    },
+    "author": "Krish, Mohammad, Mridul, Dave",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cheatsoft/chat/issues"
+    },
+    "homepage": "https://github.com/cheatsoft/chat#readme"
 }
