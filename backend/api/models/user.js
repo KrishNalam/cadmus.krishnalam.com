@@ -1,5 +1,10 @@
 import { Sequelize, DataTypes } from 'sequelize'
-import sequelize from '../../index.js'
+//import { sequelize } from '../../index.js'
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './chatApp.db',
+})
 
 const User = sequelize.define('User', {
     name: {
@@ -12,3 +17,5 @@ const User = sequelize.define('User', {
         primaryKey: true,
     },
 })
+
+export { User }

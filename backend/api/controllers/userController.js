@@ -1,6 +1,7 @@
-import User from './models/user'
+import { User } from '.././models/user.js'
 
 async function addUser(name) {
+    console.log(name)
     try {
         const user = await User.create({ name })
         console.log('User created:', user)
@@ -52,3 +53,5 @@ async function deleteUser(id, name) {
         console.error('Error deleting user:', error)
     }
 }
+
+export { addUser }
