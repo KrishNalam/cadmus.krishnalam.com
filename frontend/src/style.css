@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.title {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-size: xxx-large;
+    padding-top: 10%;
+}
+
+.txteditor {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* padding: 5%; */
+    border: solid;
+    /* border-radius: 10%; */
+}
+
+.sidebar {
+    border: solid;
+    border-radius: 1rem;
+    padding: 2%;
+    margin: 2% 1% 2% 2%;
+}
+
+.chatbox {
+    border: solid;
+    border-radius: 1rem;
+    padding: 2%;
+    margin: 2% 2% 2% 1%;
+    display: flex;
+    flex-grow: 1;
+}
+
+.user {
+    font-size: x-large;
+    margin-top: 1rem;
+    display: flex;
+    background: transparent;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    flex-grow: ;
+    border-bottom: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.user:hover {
+    opacity: 50%;
+}
+
+.user:active {
+    background: white;
+}
