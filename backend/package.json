@@ -10,7 +10,7 @@
         "type": "git",
         "url": "git+https://github.com/cheatsoft/chat.git"
     },
-    "author": "Krish, Mohammad, Mridul, Dave",
+    "author": "Krish",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/cheatsoft/chat/issues"
@@ -18,7 +18,9 @@
     "homepage": "https://github.com/cheatsoft/chat#readme",
     "description": "Back end for chat app",
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.21.2",
+        "sequelize": "^6.37.7",
         "sqlite3": "^5.1.7"
     },
     "devDependencies": {
