@@ -1,21 +1,44 @@
-document.addEventListener('DOMContentLoaded', loadUsers)
-
-const users = [
-    {
-        id: 'Krish Nalam',
-        last_msg: 'You are a retard',
-    },
-    {
-        id: 'Mohammad Anwar',
-    },
-]
+document.addEventListener('DOMContentLoaded', runAll)
 
 function loadUsers() {
-    document.getElementById('users').innerHTML = ''
-    for (const x of users) {
-        const curr = document.createElement('button')
-        curr.innerHTML = x.id
-        curr.classList.add('user')
-        document.getElementById('users').appendChild(curr)
-    }
+    fetch('http://localhost:3000/user/readAll', { method: 'GET' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Response was not ok')
+            }
+            return response.json()
+        })
+        .then((json) => {
+            document.getElementById('users').innerHTML = ''
+            for (const x of json.allUsers) {
+                const curr = document.createElement('div')
+                curr.innerHTML = x.name
+                curr.classList.add('user')
+                curr.id = x.name
+                document.getElementById('users').appendChild(curr)
+                console.log(curr.getAttribute('id'))
+            }
+        })
+}
+
+function sepWords(name) {
+    document.getElementById('messages').innerHTML = name
+}
+
+// add User
+// fetch('http://localhost:3000/user/create', requestOptions).then(
+//     (response) => {
+//         console.log(response)
+//         if (!response.ok) {
+//             console.log('wedyu')
+//             throw new Error('Response was not ok')
+//         }
+//         return response.json()
+//     }
+// )
+
+function runAll() {
+    loadUsers()
+    document.getElementById('Dave').onclick = sepWords('dwe')
+    //loadUsers()
 }
