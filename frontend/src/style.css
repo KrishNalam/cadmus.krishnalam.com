@@ -11,7 +11,7 @@ body {
     flex-direction: row;
     height: 100vh;
 }
-
+/* 
 .title {
     font-weight: bold;
     display: flex;
@@ -24,15 +24,14 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* padding: 5%; */
+    padding: 5%;
     border: solid;
-    /* border-radius: 10%; */
-}
+    border-radius: 10%;
+} */
 
 .sidebar {
     border: solid;
     border-radius: 1rem;
-    padding: 2%;
     margin: 2% 1% 2% 2%;
 }
 
@@ -45,23 +44,26 @@ body {
     flex-grow: 1;
 }
 
+.msg {
+    display: none;
+}
+
 .user {
     font-size: x-large;
-    margin-top: 1rem;
+    font-weight: bolder;
+    padding: 1rem 1rem 0rem 1rem;
     display: flex;
     background: transparent;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
-    border-bottom: solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    width: auto;
+    opacity: 0.5;
 }
 
 .user:hover {
-    opacity: 50%;
+    opacity: 1;
 }
 
-.user:active {
-    background: white;
+.user.active {
+    opacity: 1;
+    text-shadow: 3px 3px 2px grey;
 }

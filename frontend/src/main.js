@@ -10,19 +10,22 @@ function loadUsers() {
         })
         .then((json) => {
             document.getElementById('users').innerHTML = ''
+            document.getElementById('messages').innerHTML = ''
             for (const x of json.allUsers) {
                 const curr = document.createElement('div')
-                curr.innerHTML = x.name
+                const currContent = document.createElement('div')
+                curr.innerText = x.name
                 curr.classList.add('user')
-                curr.id = x.name
+                currContent.id = x.name
+                currContent.innerText = x.name
+                currContent.classList.add('msg')
+                curr.onclick = function () {
+                    openCity(event, x.name)
+                }
                 document.getElementById('users').appendChild(curr)
-                console.log(curr.getAttribute('id'))
+                document.getElementById('messages').appendChild(currContent)
             }
         })
-}
-
-function sepWords(name) {
-    document.getElementById('messages').innerHTML = name
 }
 
 // add User
@@ -36,9 +39,26 @@ function sepWords(name) {
 //         return response.json()
 //     }
 // )
+function openCity(event, cityName) {
+    let i, tabcontent, tablinks
+    tabcontent = document.getElementsByClassName('msg')
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = 'none'
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName('user')
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(' active', '')
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = 'block'
+    event.currentTarget.className += ' active'
+}
 
 function runAll() {
     loadUsers()
-    document.getElementById('Dave').onclick = sepWords('dwe')
+    //document.getElementById('Dave').onclick = sepWords('dwe')
     //loadUsers()
 }
