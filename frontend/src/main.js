@@ -19,9 +19,21 @@ function loadUsers() {
                 currContent.id = x.name
                 currContent.innerText = x.name
                 currContent.classList.add('msg')
-                curr.onclick = function () {
-                    openCity(event, x.name)
-                }
+                curr.addEventListener('click', () => {
+                    let i, allHistory, currEffect
+                    allHistory = document.getElementsByClassName('msg')
+                    for (i = 0; i < allHistory.length; i++) {
+                        allHistory[i].style.display = 'none'
+                    }
+                    currEffect = document.getElementsByClassName('user')
+                    for (i = 0; i < currEffect.length; i++) {
+                        currEffect[i].className = currEffect[
+                            i
+                        ].className.replace(' active', '')
+                    }
+                    document.getElementById(x.name).style.display = 'unset'
+                    curr.className += ' active'
+                })
                 document.getElementById('users').appendChild(curr)
                 document.getElementById('messages').appendChild(currContent)
             }
@@ -39,26 +51,7 @@ function loadUsers() {
 //         return response.json()
 //     }
 // )
-function openCity(event, cityName) {
-    let i, tabcontent, tablinks
-    tabcontent = document.getElementsByClassName('msg')
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = 'none'
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName('user')
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(' active', '')
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = 'block'
-    event.currentTarget.className += ' active'
-}
 
 function runAll() {
     loadUsers()
-    //document.getElementById('Dave').onclick = sepWords('dwe')
-    //loadUsers()
 }
