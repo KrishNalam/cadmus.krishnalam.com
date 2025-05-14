@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes } from 'sequelize'
-//import { sequelize } from '../../index.js'
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
