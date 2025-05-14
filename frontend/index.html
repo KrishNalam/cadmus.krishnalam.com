@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chat App</title>
+        <title>Project Cadmus</title>
         <link rel="stylesheet" href="src/reset.css" />
         <link rel="stylesheet" href="src/style.css" />
         <script type="module" src="/src/main.js" defer></script>
@@ -19,7 +19,13 @@
                 <input placeholder="Password" />
             </form>
         </div> -->
-        <div id="users" class="sidebar"></div>
-        <div id="messages" class="chatbox">Hello</div>
+        <div id="sidebar"></div>
+        <div id="chatbox">
+            <div id="display"></div>
+            <div id="messages">
+                <div class="default">Click on a user to send a message</div>
+            </div>
+            <!-- <input placeholder="Send a message..." /> -->
+        </div>
     </body>
 </html>

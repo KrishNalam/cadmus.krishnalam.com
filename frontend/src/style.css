@@ -11,41 +11,95 @@ body {
     flex-direction: row;
     height: 100vh;
 }
-/* 
-.title {
+
+/* .title {
     font-weight: bold;
     display: flex;
     justify-content: center;
     font-size: xxx-large;
     padding-top: 10%;
-}
-
-.txteditor {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 5%;
-    border: solid;
-    border-radius: 10%;
 } */
 
-.sidebar {
+input {
+    background-color: transparent;
+    padding: 7px;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    margin: 0.7rem;
     border: solid;
-    border-radius: 1rem;
-    margin: 2% 1% 2% 2%;
+    border-width: thin;
+    border-radius: 0.2rem;
 }
 
-.chatbox {
+.default {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    font-size: x-large;
+    padding: 1rem;
+    text-align: center;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.sender {
+    display: flex;
+    justify-content: flex-start;
+    font-size: large;
+    padding: 1rem;
+}
+
+.sender:hover {
+    background: #141414;
+    opacity: 0.7;
+}
+
+.you {
+    display: flex;
+    justify-content: flex-end;
+    font-size: large;
+    padding: 1rem;
+}
+
+.you:hover {
+    background: #141414;
+    opacity: 0.7;
+}
+
+#sidebar {
     border: solid;
-    border-radius: 1rem;
-    padding: 2%;
+    border-radius: 0.2rem;
+    margin: 2% 1% 2% 2%;
+    width: 20%;
+}
+
+#chatbox {
+    border: solid;
+    border-radius: 0.2rem;
     margin: 2% 2% 2% 1%;
     display: flex;
     flex-grow: 1;
+    flex-direction: column;
 }
 
-.msg {
+.header {
     display: none;
+    border-bottom: solid;
+    border-width: thin;
+    height: auto;
+    flex-grow: 1;
+    padding: 1rem;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-shadow: 3px 3px 2px grey;
 }
 
 .user {
