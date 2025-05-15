@@ -113,6 +113,8 @@ input {
     color: white;
     width: auto;
     opacity: 0.5;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
 .user:hover {
@@ -122,6 +124,7 @@ input {
 .user.active {
     opacity: 1;
     text-shadow: -2px 2px 2px darkgray;
-    transition: 0.7ms;
+    transition: 0.5s;
     padding-left: 1.5rem;
+    font-size: xx-large;
 }

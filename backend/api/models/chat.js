@@ -16,3 +16,5 @@ const Chat = sequelize.define('Chat', {
         allowNull: false,
     },
 })
+
+export { Chat }

@@ -31,7 +31,6 @@ function load() {
                     curr.className += ' active'
                     loadMessages(x.name)
                 })
-
                 document.getElementById('sidebar').appendChild(curr)
                 document.getElementById('display').appendChild(currContent)
             }
