@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', load)
+document.addEventListener('DOMContentLoaded', runAll)
 
 function load() {
     fetch('http://localhost:3000/user/readAll', { method: 'GET' })
@@ -97,6 +97,15 @@ function loadMessages(name) {
     document.getElementById('messages').appendChild(send)
 }
 
+function signIn() {
+    document
+        .getElementsByClassName('title')[0]
+        .addEventListener('click', () => {
+            console.log('edhuji')
+            document.getElementById('signedOut').style.display = 'none'
+        })
+}
+
 // add User
 // fetch('http://localhost:3000/user/create', requestOptions).then(
 //     (response) => {
@@ -111,4 +120,5 @@ function loadMessages(name) {
 
 function runAll() {
     load()
+    signIn()
 }

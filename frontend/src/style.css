@@ -7,18 +7,15 @@ body {
     background: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
+    overflow-y: hidden;
 }
 
-/* .title {
-    font-weight: bold;
+.title {
     display: flex;
     justify-content: center;
-    font-size: xxx-large;
-    padding-top: 10%;
-} */
+    font-size: x-large;
+    text-shadow: -2px 2px 2px darkgray;
+}
 
 input {
     background-color: transparent;
@@ -125,6 +122,25 @@ input {
     opacity: 1;
     text-shadow: -2px 2px 2px darkgray;
     transition: 0.5s;
-    padding-left: 1.5rem;
     font-size: xx-large;
+}
+
+#signedIn {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+#signedOut {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.txteditor {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
 }
