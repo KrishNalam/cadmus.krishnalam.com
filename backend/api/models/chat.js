@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes } from 'sequelize'
-import User from '/user.js'
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -11,8 +10,12 @@ const Chat = sequelize.define('Chat', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    sender: {
-        type: User,
+    conversationId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    sending: {
+        type: DataTypes.BOOLEAN,
         allowNull: false,
     },
 })

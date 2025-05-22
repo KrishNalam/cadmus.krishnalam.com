@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', runAll)
 
-function load() {
+function loadUsers() {
     fetch('http://localhost:3000/user/readAll', { method: 'GET' })
         .then((response) => {
             if (!response.ok) {
@@ -38,74 +38,55 @@ function load() {
 }
 
 function loadMessages(name) {
-    const tester = {
-        Dave: [
-            {
-                You: 'dew',
-            },
-            {
-                Sender: 'Lmao',
-            },
-        ],
-        Krish: [
-            {
-                You: 'Bruh',
-            },
-            {
-                Sender: 'Lmao',
-            },
-        ],
-        Mridul: [
-            {
-                You: 'Bruh',
-            },
-            {
-                Sender: 'Lmao',
-            },
-        ],
-        Mohammad: [
-            {
-                You: 'Bruh',
-            },
-            {
-                Sender: 'Lmao',
-            },
-        ],
-    }
-    document.getElementById('messages').innerHTML = ''
-    if (tester[name]) {
-        for (let i = 0; i < tester[name].length; i++) {
-            let msg = document.createElement('div')
-            if (tester[name][i].You) {
-                msg.innerText = tester[name][i].You
-                msg.classList.add('you')
+    fetch('http://localhost:3000/chat/read?conversationId=' + name, {
+        method: 'GET',
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Response was not ok')
             }
-            if (tester[name][i].Sender) {
-                msg.innerText = tester[name][i].Sender
-                msg.classList.add('sender')
+            return response.json()
+        })
+        .then((json) => {
+            document.getElementById('messages').innerHTML = ''
+            if (0 < json.allMsgs.length) {
+                for (let i = 0; i < json.allMsgs.length; i++) {
+                    let msg = document.createElement('div')
+                    if (json.allMsgs[i].sending) {
+                        msg.innerText = json.allMsgs[i].message
+                        msg.classList.add('you')
+                    } else {
+                        msg.innerText = json.allMsgs[i].message
+                        msg.classList.add('sender')
+                    }
+                    document.getElementById('messages').appendChild(msg)
+                }
+            } else {
+                const first = document.createElement('div')
+                first.innerText = 'Start a Conversation'
+                first.classList.add('default')
+                document.getElementById('messages').appendChild(first)
             }
-            document.getElementById('messages').appendChild(msg)
-        }
-    } else {
-        const first = document.createElement('div')
-        first.innerText = 'Send a message to start a conversation'
-        first.classList.add('default')
-        document.getElementById('messages').appendChild(first)
-    }
-    const send = document.createElement('input')
-    send.placeholder = 'Send a message...'
-    document.getElementById('messages').appendChild(send)
+            const send = document.createElement('input')
+            send.placeholder = 'Send a message...'
+            send.id = 'send'
+            document.getElementById('messages').appendChild(send)
+        })
 }
 
 function signIn() {
     document
         .getElementsByClassName('title')[0]
         .addEventListener('click', () => {
-            console.log('edhuji')
             document.getElementById('signedOut').style.display = 'none'
         })
 }
 
+// function sendMsg() {
+//     document.addEventListener('keydown', () => {
+//         console.log('dewio')
+//     })
+// }
 // add User
 // fetch('http://localhost:3000/user/create', requestOptions).then(
 //     (response) => {
@@ -116,9 +97,46 @@ function signIn() {
 //         }
 //         return response.json()
 //     }
-// )
+// // )
+// const tester = {
+//     Dave: [
+//         {
+//             You: 'dew',
+//         },
+//         {
+//             Sender: 'Lmao',
+//         },
+//     ],
+//     Krish: [
+//         {
+//             You: 'Bruh',
+//         },
+//         {
+//             Sender: 'Lmao',
+//         },
+//     ],
+//     Mridul: [
+//         {
+//             You: 'Bruh',
+//         },
+//         {
+//             Sender: 'Lmao',
+//         },
+//     ],
+//     Mohammad: [
+//         {
+//             You: 'Bruh',
+//         },
+//         {
+//             Sender: 'Lmao',
+//         },
+//     ],
+// }
 
 function runAll() {
-    load()
-    signIn()
+    loadUsers()
+    // signIn()
+    //console.log(callMessages())
+
+    // sendMsg()
 }
