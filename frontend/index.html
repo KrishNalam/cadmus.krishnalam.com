@@ -3,23 +3,28 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chat App</title>
+        <title>Project Cadmus</title>
         <link rel="stylesheet" href="src/reset.css" />
         <link rel="stylesheet" href="src/style.css" />
         <script type="module" src="/src/main.js" defer></script>
         <link rel="manifest" href="manifest.json" />
     </head>
     <body>
-        <!-- <div class="title">Project Cadmus</div>
-        <div class="txteditor">
+        <!-- <div id="signedOut">
+            <div class="title">Project Cadmus</div>
             <form class="txteditor">
                 <input placeholder="User" />
-            </form>
-            <form>
-                <input placeholder="Password" />
+                <input placeholder="Password" type="password" />
             </form>
         </div> -->
-        <div id="users" class="sidebar"></div>
-        <div id="messages" class="chatbox">Hello</div>
+        <div id="signedIn">
+            <div id="sidebar"></div>
+            <div id="chatbox">
+                <div id="display"></div>
+                <div id="messages">
+                    <div class="default">Click on a User</div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

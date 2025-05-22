@@ -1,7 +1,6 @@
 import { User } from '.././models/user.js'
 
 async function addUser(req, res) {
-    console.log(req.body)
     try {
         await User.sync()
         const user = await User.create(req.body)
@@ -15,19 +14,19 @@ async function addUser(req, res) {
     }
 }
 
-async function findUser(id) {
-    try {
-        const user = await User.findByPk(id)
-        if (user) {
-            console.log('User found:', user)
-            return user
-        } else {
-            console.log('User not found')
-        }
-    } catch (error) {
-        console.error('Error retrieving user:', error)
-    }
-}
+// async function findUser(id) {
+//     try {
+//         const user = await User.findByPk(id)
+//         if (user) {
+//             console.log('User found:', user)
+//             return user
+//         } else {
+//             console.log('User not found')
+//         }
+//     } catch (error) {
+//         console.error('Error retrieving user:', error)
+//     }
+// }
 
 async function findAllUsers(req, res) {
     try {
@@ -73,4 +72,4 @@ async function findAllUsers(req, res) {
 //         console.error('Error deleting user:', error)
 //     }
 // }
-export { addUser, findAllUsers, findUser }
+export { addUser, findAllUsers }

@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Basic chat app",
     "scripts": {
-        "dev": "cd ./backend && npm install && npm run dev && cd ../frontend && npm install && npm run dev"
+        "start": "concurrently \"cd frontend && npm install && npm run dev\" \"cd backend && npm install && npm run dev\""
     },
     "repository": {
         "type": "git",
@@ -14,5 +14,8 @@
     "bugs": {
         "url": "https://github.com/cheatsoft/chat/issues"
     },
-    "homepage": "https://github.com/cheatsoft/chat#readme"
+    "homepage": "https://github.com/cheatsoft/chat#readme",
+    "devDependencies": {
+        "concurrently": "^9.1.2"
+    }
 }

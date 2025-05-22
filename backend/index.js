@@ -3,6 +3,7 @@ import cors from 'cors'
 import sqlite3 from 'sqlite3'
 import { Sequelize } from 'sequelize'
 import userRoute from './api/routes/userRoute.js'
+import chatRoute from './api/routes/chatRoute.js'
 //import { addUser } from './api/controllers/chatController'
 
 new sqlite3.Database('./chatApp.db')
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/user', userRoute)
+app.use('/chat', chatRoute)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
