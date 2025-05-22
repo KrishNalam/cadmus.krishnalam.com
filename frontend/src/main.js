@@ -82,11 +82,12 @@ function signIn() {
         })
 }
 
-// function sendMsg() {
-//     document.addEventListener('keydown', () => {
-//         console.log('dewio')
-//     })
-// }
+function sendMsg() {
+    document.addEventListener('keydown', () => {
+        console.log('dewio')
+    })
+}
+
 // add User
 // fetch('http://localhost:3000/user/create', requestOptions).then(
 //     (response) => {
@@ -98,45 +99,9 @@ function signIn() {
 //         return response.json()
 //     }
 // // )
-// const tester = {
-//     Dave: [
-//         {
-//             You: 'dew',
-//         },
-//         {
-//             Sender: 'Lmao',
-//         },
-//     ],
-//     Krish: [
-//         {
-//             You: 'Bruh',
-//         },
-//         {
-//             Sender: 'Lmao',
-//         },
-//     ],
-//     Mridul: [
-//         {
-//             You: 'Bruh',
-//         },
-//         {
-//             Sender: 'Lmao',
-//         },
-//     ],
-//     Mohammad: [
-//         {
-//             You: 'Bruh',
-//         },
-//         {
-//             Sender: 'Lmao',
-//         },
-//     ],
-// }
 
 function runAll() {
     loadUsers()
     // signIn()
-    //console.log(callMessages())
-
     // sendMsg()
 }
