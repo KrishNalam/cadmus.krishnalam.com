@@ -4,7 +4,7 @@ async function addUser(req, res) {
     try {
         await User.sync()
         const user = await User.create(req.body)
-        res.status(201).json({ message: 'User created successfully', user })
+        res.status(201).json(user)
     } catch (error) {
         console.error('Error creating user:', error)
         res.status(500).json({
@@ -31,10 +31,7 @@ async function addUser(req, res) {
 async function findAllUsers(req, res) {
     try {
         const allUsers = await User.findAll()
-        res.status(200).json({
-            message: 'All users read successfully',
-            allUsers,
-        })
+        res.status(200).json(allUsers)
     } catch (error) {
         console.error('Error retrieving user:', error)
         res.status(500).json({

@@ -1,5 +1,26 @@
 document.addEventListener('DOMContentLoaded', runAll)
 
+function populateUsers(allUsers) {
+    for (let x of allUsers) {
+        const user = document.createElement('div')
+        user.innerText = x.name
+        user.id = x.name
+        user.classList.add('user')
+        user.addEventListener('click', () => {
+            const userSelect = document.getElementsByClassName('user')
+            for (let i = 0; i < userSelect.length; i++) {
+                userSelect[i].classList.remove('active')
+            }
+            user.className += ' active'
+            document.getElementById('chatHeader').innerText = user.innerText
+            document.getElementById('chatHeader').style.display = 'flex'
+            loadMessages(x.name)
+            sendMsg(x.name)
+        })
+        document.getElementById('sidebar').appendChild(user)
+    }
+}
+
 function loadUsers() {
     fetch('http://localhost:3000/user/readAll', { method: 'GET' })
         .then((response) => {
@@ -8,33 +29,34 @@ function loadUsers() {
             }
             return response.json()
         })
-        .then((json) => {
-            for (const x of json.allUsers) {
-                const curr = document.createElement('div')
-                const currContent = document.createElement('div')
-                curr.innerText = x.name
-                curr.classList.add('user')
-                currContent.id = x.name
-                currContent.innerText = x.name
-                currContent.classList.add('header')
-                curr.addEventListener('click', () => {
-                    let i, allHistory, currEffect
-                    allHistory = document.getElementsByClassName('header')
-                    currEffect = document.getElementsByClassName('user')
-                    for (i = 0; i < allHistory.length; i++) {
-                        allHistory[i].style.display = 'none'
-                        currEffect[i].className = currEffect[
-                            i
-                        ].className.replace(' active', '')
-                    }
-                    document.getElementById(x.name).style.display = 'flex'
-                    curr.className += ' active'
-                    loadMessages(x.name)
-                })
-                document.getElementById('sidebar').appendChild(curr)
-                document.getElementById('display').appendChild(currContent)
-            }
+        .then((allUsers) => {
+            populateUsers(allUsers)
         })
+}
+
+function populateMgs(allMsgs) {
+    document.getElementById('chatHistory').innerHTML = ''
+    if (0 < allMsgs.length) {
+        for (let i = 0; i < allMsgs.length; i++) {
+            let msg = document.createElement('div')
+            if (allMsgs[i].sending) {
+                msg.innerText = allMsgs[i].message
+                msg.classList.add('sending')
+            } else {
+                msg.innerText = allMsgs[i].message
+                msg.classList.add('receiving')
+            }
+            document.getElementById('chatHistory').appendChild(msg)
+        }
+    } else {
+        const first = document.createElement('div')
+        first.innerText = 'Start a Conversation'
+        first.classList.add('idleScreen')
+        document.getElementById('chatHistory').appendChild(first)
+    }
+    document.getElementById('send').style.display = 'flex'
+    document.getElementById('chatHistory').scrollTop =
+        document.getElementById('chatHistory').scrollHeight
 }
 
 function loadMessages(name) {
@@ -47,61 +69,43 @@ function loadMessages(name) {
             }
             return response.json()
         })
-        .then((json) => {
-            document.getElementById('messages').innerHTML = ''
-            if (0 < json.allMsgs.length) {
-                for (let i = 0; i < json.allMsgs.length; i++) {
-                    let msg = document.createElement('div')
-                    if (json.allMsgs[i].sending) {
-                        msg.innerText = json.allMsgs[i].message
-                        msg.classList.add('you')
-                    } else {
-                        msg.innerText = json.allMsgs[i].message
-                        msg.classList.add('sender')
-                    }
-                    document.getElementById('messages').appendChild(msg)
+        .then((allMsgs) => {
+            populateMgs(allMsgs)
+        })
+}
+
+function sendMsg(name) {
+    document.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            fetch('http://localhost:3000/chat/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: document.getElementById('send').value,
+                    conversationId: name,
+                    sending: true,
+                }),
+            }).then((response) => {
+                if (!response.ok) {
+                    throw new Error('Response was not ok')
                 }
-            } else {
-                const first = document.createElement('div')
-                first.innerText = 'Start a Conversation'
-                first.classList.add('default')
-                document.getElementById('messages').appendChild(first)
-            }
-            const send = document.createElement('input')
-            send.placeholder = 'Send a message...'
-            send.id = 'send'
-            document.getElementById('messages').appendChild(send)
-        })
-}
-
-function signIn() {
-    document
-        .getElementsByClassName('title')[0]
-        .addEventListener('click', () => {
-            document.getElementById('signedOut').style.display = 'none'
-        })
-}
-
-function sendMsg() {
-    document.addEventListener('keydown', () => {
-        console.log('dewio')
+                loadMessages(name)
+                document.getElementById('send').value = ''
+                return response.json()
+            })
+        }
     })
 }
 
-// add User
-// fetch('http://localhost:3000/user/create', requestOptions).then(
-//     (response) => {
-//         console.log(response)
-//         if (!response.ok) {
-//             console.log('wedyu')
-//             throw new Error('Response was not ok')
-//         }
-//         return response.json()
-//     }
-// // )
+function signIn() {
+    document.getElementById('welcome').addEventListener('click', () => {
+        document.getElementById('signedOut').style.display = 'none'
+    })
+}
 
 function runAll() {
     loadUsers()
-    // signIn()
-    // sendMsg()
+    signIn()
 }

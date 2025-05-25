@@ -10,20 +10,25 @@
         <link rel="manifest" href="manifest.json" />
     </head>
     <body>
-        <!-- <div id="signedOut">
-            <div class="title">Project Cadmus</div>
+        <div id="signedOut">
+            <h1 id="welcome">Project Cadmus<h1>
             <form class="txteditor">
                 <input placeholder="User" />
                 <input placeholder="Password" type="password" />
             </form>
-        </div> -->
+        </div>
         <div id="signedIn">
             <div id="sidebar"></div>
-            <div id="chatbox">
-                <div id="display"></div>
-                <div id="messages">
-                    <div class="default">Click on a User</div>
+            <div id="contentArea">
+                <h1 id="chatHeader"></h1>
+                <div id="chatHistory">
+                    <div class="idleScreen">Click on a User</div>
                 </div>
+                <input
+                    placeholder="Send a message..."
+                    id="send"
+                    autocomplete="off"
+                />
             </div>
         </div>
     </body>
