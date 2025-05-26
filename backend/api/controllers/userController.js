@@ -14,21 +14,21 @@ async function addUser(req, res) {
     }
 }
 
-// async function findUser(id) {
-//     try {
-//         const user = await User.findByPk(id)
-//         if (user) {
-//             console.log('User found:', user)
-//             return user
-//         } else {
-//             console.log('User not found')
-//         }
-//     } catch (error) {
-//         console.error('Error retrieving user:', error)
-//     }
-// }
+async function findUser(req, res) {
+    try {
+        const user = await User.findOne({ where: req.body })
+        if (user) {
+            console.log('User found:', user)
+            res.status(200).json(user.name)
+        } else {
+            console.log('User not found')
+        }
+    } catch (error) {
+        console.error('Error retrieving user:', error)
+    }
+}
 
-async function findAllUsers(req, res) {
+async function findAllUsers(_req, res) {
     try {
         const allUsers = await User.findAll()
         res.status(200).json(allUsers)
@@ -69,4 +69,4 @@ async function findAllUsers(req, res) {
 //         console.error('Error deleting user:', error)
 //     }
 // }
-export { addUser, findAllUsers }
+export { addUser, findAllUsers, findUser }

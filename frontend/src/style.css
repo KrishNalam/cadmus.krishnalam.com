@@ -47,6 +47,14 @@ h1 {
     height: 100vh;
 }
 
+.login {
+    /*Display stuff*/
+    display: flex;
+    flex-direction: column;
+    /*Box model stuff*/
+    margin: 1rem;
+}
+
 #signedIn {
     /*Display stuff*/
     display: flex;
@@ -126,8 +134,8 @@ h1 {
     display: none;
     /*Box model stuff*/
     padding: 1rem;
-    border-width: thin;
     border-bottom: solid;
+    border-width: thin;
     /*Typography stuff*/
     font-size: xx-large;
     font-weight: bolder;
@@ -183,19 +191,4 @@ h1 {
 #send {
     /*Display stuff*/
     display: none;
-}
-
-.title {
-    /*Display stuff*/
-    display: flex;
-    justify-content: center;
-    /*Typography stuff*/
-    font-size: x-large;
-    text-shadow: -2px 2px 2px darkgray;
-}
-
-.txteditor {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
 }

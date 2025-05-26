@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize'
+import { Json } from 'sequelize/lib/utils'
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -14,8 +15,12 @@ const Chat = sequelize.define('Chat', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    sending: {
-        type: DataTypes.BOOLEAN,
+    receiver: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    sender: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
 })

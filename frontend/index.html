@@ -12,10 +12,10 @@
     <body>
         <div id="signedOut">
             <h1 id="welcome">Project Cadmus<h1>
-            <form class="txteditor">
-                <input placeholder="User" />
-                <input placeholder="Password" type="password" />
-            </form>
+            <div class="login">
+                <input id="username" placeholder="User" type="text"/>
+                <input id="password" placeholder="Password" type="password" />
+            </div>
         </div>
         <div id="signedIn">
             <div id="sidebar"></div>
@@ -27,7 +27,7 @@
                 <input
                     placeholder="Send a message..."
                     id="send"
-                    autocomplete="off"
+                    autocomplete="off" type="text"
                 />
             </div>
         </div>

@@ -1,7 +1,6 @@
 import { Chat } from '.././models/chat.js'
 
 async function addMsg(req, res) {
-    console.log('wedui')
     try {
         await Chat.sync()
         const msg = await Chat.create(req.body)
@@ -16,7 +15,6 @@ async function addMsg(req, res) {
 }
 
 async function getMsgs(req, res) {
-    console.log(req.query.conversationId)
     try {
         const allMsgs = await Chat.findAll({
             where: { conversationId: req.query.conversationId },

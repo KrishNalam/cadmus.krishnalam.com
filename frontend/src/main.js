@@ -1,4 +1,33 @@
+'use strict'
 document.addEventListener('DOMContentLoaded', runAll)
+let loggedUser
+function signIn() {
+    document.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            fetch(import.meta.env.VITE_BACKEND + 'user/read', {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('username').value,
+                    pass: document.getElementById('password').value,
+                }),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Response was not ok')
+                    }
+                    return response.json()
+                })
+                .then((loggedIn) => {
+                    loggedUser = loggedIn
+                    document.getElementById('signedOut').style.display = 'none'
+                })
+        }
+    })
+}
 
 function populateUsers(allUsers) {
     for (let x of allUsers) {
@@ -22,7 +51,7 @@ function populateUsers(allUsers) {
 }
 
 function loadUsers() {
-    fetch('http://localhost:3000/user/readAll', { method: 'GET' })
+    fetch(import.meta.env.VITE_BACKEND + 'user/readAll', { method: 'GET' })
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Response was not ok')
@@ -39,7 +68,7 @@ function populateMgs(allMsgs) {
     if (0 < allMsgs.length) {
         for (let i = 0; i < allMsgs.length; i++) {
             let msg = document.createElement('div')
-            if (allMsgs[i].sending) {
+            if (allMsgs[i].sender === loggedUser) {
                 msg.innerText = allMsgs[i].message
                 msg.classList.add('sending')
             } else {
@@ -60,9 +89,15 @@ function populateMgs(allMsgs) {
 }
 
 function loadMessages(name) {
-    fetch('http://localhost:3000/chat/read?conversationId=' + name, {
-        method: 'GET',
-    })
+    let convoId = [name, loggedUser].sort()
+    fetch(
+        import.meta.env.VITE_BACKEND +
+            'chat/read?conversationId=' +
+            `${convoId[0]}_${convoId[1]}`,
+        {
+            method: 'GET',
+        }
+    )
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Response was not ok')
@@ -75,17 +110,19 @@ function loadMessages(name) {
 }
 
 function sendMsg(name) {
+    let convoId = [name, loggedUser].sort()
     document.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            fetch('http://localhost:3000/chat/create', {
+            fetch(import.meta.env.VITE_BACKEND + 'chat/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     message: document.getElementById('send').value,
-                    conversationId: name,
-                    sending: true,
+                    conversationId: `${convoId[0]}_${convoId[1]}`,
+                    receiver: name,
+                    sender: loggedUser,
                 }),
             }).then((response) => {
                 if (!response.ok) {
@@ -98,14 +135,7 @@ function sendMsg(name) {
         }
     })
 }
-
-function signIn() {
-    document.getElementById('welcome').addEventListener('click', () => {
-        document.getElementById('signedOut').style.display = 'none'
-    })
-}
-
 function runAll() {
-    loadUsers()
     signIn()
+    loadUsers()
 }
