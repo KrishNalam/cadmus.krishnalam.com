@@ -24,7 +24,12 @@ try {
 const app = express()
 const port = 8080
 
-app.use(cors())
+var corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use('/user', userRoute)

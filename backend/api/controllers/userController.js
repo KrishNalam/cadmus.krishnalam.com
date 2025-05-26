@@ -18,7 +18,6 @@ async function findUser(req, res) {
     try {
         const user = await User.findOne({ where: req.body })
         if (user) {
-            console.log('User found:', user)
             res.status(200).json(user.name)
         } else {
             console.log('User not found')
