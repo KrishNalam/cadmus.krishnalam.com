@@ -73,9 +73,9 @@ function loadUsers() {
         })
 }
 
-function populateMgs(allMsgs, name) {
+function populateMgs(allMsgs) {
     document.getElementById('chatHistory').innerHTML = ''
-    if (0 < allMsgs.length) {
+    if (allMsgs.length > 0) {
         for (let i = 0; i < allMsgs.length; i++) {
             let msg = document.createElement('div')
             if (allMsgs[i].sender === loggedUser) {
