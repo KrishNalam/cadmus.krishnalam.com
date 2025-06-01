@@ -188,7 +188,7 @@ h1 {
     opacity: 0.7;
 }
 
-#send {
+.send {
     /*Display stuff*/
     display: none;
 }

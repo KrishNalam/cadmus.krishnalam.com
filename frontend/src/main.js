@@ -1,6 +1,8 @@
 'use strict'
 document.addEventListener('DOMContentLoaded', runAll)
+
 let loggedUser
+
 function signIn() {
     document.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
@@ -35,18 +37,26 @@ function populateUsers(allUsers) {
         user.innerText = x.name
         user.id = x.name
         user.classList.add('user')
+        const send = document.createElement('input')
+        send.placeholder = 'Send a message...'
+        send.autocomplete = 'off'
+        send.id = 'send' + x.name
+        send.classList = 'send'
         user.addEventListener('click', () => {
             const userSelect = document.getElementsByClassName('user')
             for (let i = 0; i < userSelect.length; i++) {
                 userSelect[i].classList.remove('active')
+                document.getElementsByClassName('send')[i].style.display =
+                    'none'
             }
-            user.className += ' active'
+            user.classList.add('active')
+            document.getElementById('send' + x.name).style.display = 'flex'
             document.getElementById('chatHeader').innerText = user.innerText
             document.getElementById('chatHeader').style.display = 'flex'
             loadMessages(x.name)
-            sendMsg(x.name)
         })
         document.getElementById('sidebar').appendChild(user)
+        document.getElementById('contentArea').appendChild(send)
     }
 }
 
@@ -63,7 +73,7 @@ function loadUsers() {
         })
 }
 
-function populateMgs(allMsgs) {
+function populateMgs(allMsgs, name) {
     document.getElementById('chatHistory').innerHTML = ''
     if (0 < allMsgs.length) {
         for (let i = 0; i < allMsgs.length; i++) {
@@ -83,7 +93,7 @@ function populateMgs(allMsgs) {
         first.classList.add('idleScreen')
         document.getElementById('chatHistory').appendChild(first)
     }
-    document.getElementById('send').style.display = 'flex'
+
     document.getElementById('chatHistory').scrollTop =
         document.getElementById('chatHistory').scrollHeight
 }
@@ -105,37 +115,45 @@ function loadMessages(name) {
             return response.json()
         })
         .then((allMsgs) => {
-            populateMgs(allMsgs)
+            populateMgs(allMsgs, name)
         })
 }
 
-function sendMsg(name) {
+function sendMsg() {
+    const activeUser = document.querySelector('.user.active')
+    if (!activeUser) return
+    const name = activeUser.id
     let convoId = [name, loggedUser].sort()
-    document.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            fetch(import.meta.env.VITE_BACKEND + 'chat/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: document.getElementById('send').value,
-                    conversationId: `${convoId[0]}_${convoId[1]}`,
-                    receiver: name,
-                    sender: loggedUser,
-                }),
-            }).then((response) => {
-                if (!response.ok) {
-                    throw new Error('Response was not ok')
-                }
-                loadMessages(name)
-                document.getElementById('send').value = ''
-                return response.json()
-            })
-        }
+    const input = document.getElementById('send' + name)
+    if (!input || input.value.trim() === '') return
+
+    fetch(import.meta.env.VITE_BACKEND + 'chat/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            message: input.value.trim(),
+            conversationId: `${convoId[0]}_${convoId[1]}`,
+            receiver: name,
+            sender: loggedUser,
+        }),
+    }).then((response) => {
+        if (!response.ok) throw new Error('Response was not ok')
+        input.value = ''
+        loadMessages(name)
+        return response.json()
     })
 }
+
 function runAll() {
     signIn()
     loadUsers()
+    document.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            if (loggedUser) {
+                sendMsg()
+            }
+        }
+    })
 }
