@@ -15,15 +15,11 @@ async function addMsg(req, res) {
 }
 
 async function getMsgs(req, res) {
-    console.log(req.query.conversationId)
     try {
         const allMsgs = await Chat.findAll({
             where: { conversationId: req.query.conversationId },
         })
-        res.status(200).json({
-            message: 'All messages read successfully',
-            allMsgs,
-        })
+        res.status(200).json(allMsgs)
     } catch (error) {
         console.error('Error retrieving message:', error)
         res.status(500).json({

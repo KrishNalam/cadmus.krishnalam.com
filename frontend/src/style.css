@@ -1,146 +1,194 @@
 * {
+    /*Box model stuff*/
     margin: 0;
     padding: 0;
 }
 
 body {
+    /*Box model stuff*/
     background: black;
-    color: white;
+    /*Typography stuff*/
     font-family: 'Courier New', Courier, monospace;
-    overflow-y: hidden;
+    color: white;
 }
 
-.title {
-    display: flex;
-    justify-content: center;
+::-webkit-scrollbar {
+    /*Display stuff*/
+    display: none;
+}
+
+input {
+    /*Box model stuff*/
+    margin: 0rem 0.7rem 0.7rem 0.7rem;
+    padding: 7px;
+    border: solid;
+    border-width: thin;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    /*Typography stuff*/
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: white;
+}
+
+h1 {
+    /*Typography stuff*/
     font-size: x-large;
     text-shadow: -2px 2px 2px darkgray;
 }
 
-input {
-    background-color: transparent;
-    padding: 7px;
-    font-size: large;
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
-    margin: 0.7rem;
+#signedOut {
+    /*Display stuff*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*Box model stuff*/
+    height: 100vh;
+}
+
+.login {
+    /*Display stuff*/
+    display: flex;
+    flex-direction: column;
+    /*Box model stuff*/
+    margin: 1rem;
+}
+
+#signedIn {
+    /*Display stuff*/
+    display: flex;
+    flex-direction: row;
+    /*Box model stuff*/
+    height: 100vh;
+}
+
+#sidebar {
+    /*Box model stuff*/
+    width: 20%;
+    margin: 2% 1% 2% 2%;
     border: solid;
-    border-width: thin;
     border-radius: 0.2rem;
 }
 
-.default {
+.user {
+    /*Display stuff*/
+    display: flex;
+    /*Box model stuff*/
+    width: auto;
+    padding: 1rem 1rem 0rem 1rem;
+    background: transparent;
+    /*Typography stuff*/
+    font-size: x-large;
+    font-weight: bolder;
+    color: white;
+    /*Manipulations stuff*/
+    transition: 0.5s;
+    opacity: 0.5;
+    /*Miscellaneous*/
+    overflow: hidden;
+}
+
+.user:hover {
+    /*Manipulations stuff*/
+    opacity: 1;
+}
+
+.user.active {
+    /*Typography stuff*/
+    font-size: xx-large;
+    text-shadow: -2px 2px 2px darkgray;
+    /*Manipulations stuff*/
+    transition: 0.5s;
+    opacity: 1;
+}
+
+#contentArea {
+    /*Display stuff*/
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    /*Box model stuff*/
+    margin: 2% 2% 2% 1%;
+    border: solid;
+    border-radius: 0.2rem;
+    position: relative;
+}
+
+.idleScreen {
+    /*Display stuff*/
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    font-size: x-large;
+    /*Box model stuff*/
     padding: 1rem;
+    /*Typography stuff*/
+    font-size: x-large;
     text-align: center;
 }
 
-#messages {
+#chatHeader {
+    /*Display stuff*/
+    display: none;
+    /*Box model stuff*/
+    padding: 1rem;
+    border-bottom: solid;
+    border-width: thin;
+    /*Typography stuff*/
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+#chatHistory {
+    /*Display stuff*/
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
-    justify-content: flex-end;
+    flex-direction: column;
+    /*Positioning stuff*/
+    position: relative;
+    /*Miscellaneous*/
+    overflow: auto;
 }
 
-.sender {
-    display: flex;
-    justify-content: flex-start;
-    font-size: large;
-    padding: 1rem;
-    text-align: left;
-}
-
-.sender:hover {
-    background: #141414;
-    opacity: 0.7;
-}
-
-.you {
+.sending {
+    /*Display stuff*/
     display: flex;
     justify-content: flex-end;
-    font-size: large;
+    /*Box model stuff*/
     padding: 1rem;
+    /*Typography stuff*/
+    font-size: large;
     text-align: right;
 }
 
-.you:hover {
+.sending:hover {
+    /*Box model stuff*/
     background: #141414;
+    /*Manipulations stuff*/
     opacity: 0.7;
 }
 
-#sidebar {
-    border: solid;
-    border-radius: 0.2rem;
-    margin: 2% 1% 2% 2%;
-    width: 20%;
-}
-
-#chatbox {
-    border: solid;
-    border-radius: 0.2rem;
-    margin: 2% 2% 2% 1%;
+.receiving {
+    /*Display stuff*/
     display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-}
-
-.header {
-    display: none;
-    border-bottom: solid;
-    border-width: thin;
-    height: auto;
-    flex-grow: 1;
+    justify-content: flex-start;
+    /*Box model stuff*/
     padding: 1rem;
-    font-size: xx-large;
-    font-weight: bolder;
-    text-shadow: -2px 2px 2px darkgray;
+    /*Typography stuff*/
+    font-size: large;
+    text-align: left;
 }
 
-.user {
-    font-size: x-large;
-    font-weight: bolder;
-    padding: 1rem 1rem 0rem 1rem;
-    display: flex;
-    background: transparent;
-    color: white;
-    width: auto;
-    opacity: 0.5;
-    overflow: hidden;
-    transition: 0.5s;
+.receiving:hover {
+    /*Box model stuff*/
+    background: #141414;
+    /*Manipulations stuff*/
+    opacity: 0.7;
 }
 
-.user:hover {
-    opacity: 1;
-}
-
-.user.active {
-    opacity: 1;
-    text-shadow: -2px 2px 2px darkgray;
-    transition: 0.5s;
-    font-size: xx-large;
-}
-
-#signedIn {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-}
-
-#signedOut {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.txteditor {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
+.send {
+    /*Display stuff*/
+    display: none;
 }

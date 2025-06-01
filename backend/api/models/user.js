@@ -11,13 +11,10 @@ const User = sequelize.define('User', {
         allowNull: false,
         primaryKey: true,
     },
-    // id: {
-    //     type: DataTypes.INTEGER,
-    //     // autoIncrement: true,
-    //     primaryKey: true,
-    //     // type: DataTypes.STRING,
-    //     defaultValue: 1,
-    // },
+    pass: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
 })
 
 export { User }

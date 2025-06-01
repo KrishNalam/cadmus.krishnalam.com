@@ -4,7 +4,7 @@ async function addUser(req, res) {
     try {
         await User.sync()
         const user = await User.create(req.body)
-        res.status(201).json({ message: 'User created successfully', user })
+        res.status(201).json(user)
     } catch (error) {
         console.error('Error creating user:', error)
         res.status(500).json({
@@ -14,27 +14,23 @@ async function addUser(req, res) {
     }
 }
 
-// async function findUser(id) {
-//     try {
-//         const user = await User.findByPk(id)
-//         if (user) {
-//             console.log('User found:', user)
-//             return user
-//         } else {
-//             console.log('User not found')
-//         }
-//     } catch (error) {
-//         console.error('Error retrieving user:', error)
-//     }
-// }
+async function findUser(req, res) {
+    try {
+        const user = await User.findOne({ where: req.body })
+        if (user) {
+            res.status(200).json(user.name)
+        } else {
+            console.log('User not found')
+        }
+    } catch (error) {
+        console.error('Error retrieving user:', error)
+    }
+}
 
-async function findAllUsers(req, res) {
+async function findAllUsers(_req, res) {
     try {
         const allUsers = await User.findAll()
-        res.status(200).json({
-            message: 'All users read successfully',
-            allUsers,
-        })
+        res.status(200).json(allUsers)
     } catch (error) {
         console.error('Error retrieving user:', error)
         res.status(500).json({
@@ -72,4 +68,4 @@ async function findAllUsers(req, res) {
 //         console.error('Error deleting user:', error)
 //     }
 // }
-export { addUser, findAllUsers }
+export { addUser, findAllUsers, findUser }
