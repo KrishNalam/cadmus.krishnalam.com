@@ -42,6 +42,8 @@ function populateUsers(allUsers) {
         send.autocomplete = 'off'
         send.id = 'send' + x.name
         send.classList = 'send'
+        document.getElementById('sidebar').appendChild(user)
+        document.getElementById('contentArea').appendChild(send)
         user.addEventListener('click', () => {
             const userSelect = document.getElementsByClassName('user')
             for (let i = 0; i < userSelect.length; i++) {
@@ -54,9 +56,8 @@ function populateUsers(allUsers) {
             document.getElementById('chatHeader').innerText = user.innerText
             document.getElementById('chatHeader').style.display = 'flex'
             loadMessages(x.name)
+            document.getElementById('send' + x.name).focus()
         })
-        document.getElementById('sidebar').appendChild(user)
-        document.getElementById('contentArea').appendChild(send)
     }
 }
 
