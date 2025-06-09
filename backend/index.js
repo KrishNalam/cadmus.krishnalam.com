@@ -26,17 +26,25 @@ const port = 8080
 
 var allowlist = ['http://localhost:5173', 'https://cadmus.krishnalam.com']
 
-var corsOptionsDelegate = function (req, callback) {
-    var corsOptions
-    if (allowlist.indexOf(req.header('Origin')) !== -1) {
-        corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-    } else {
-        corsOptions = { origin: false } // disable CORS for this request
-    }
-    callback(null, corsOptions) // callback expects two parameters: error and options
+const corsOptionsDelegate = (req, callback) => {
+    const origin = req.header('Origin')
+    const isAllowed = allowlist.includes(origin)
+    callback(null, { origin: isAllowed })
 }
 
-app.use(cors(corsOptionsDelegate))
+app.use(
+    cors({
+        origin: (origin, callback) => {
+            if (!origin || allowlist.includes(origin)) {
+                callback(null, true)
+            } else {
+                callback(new Error('Not allowed by CORS'))
+            }
+        },
+        credentials: true,
+    })
+)
+
 app.use(express.json())
 
 app.use('/user', userRoute)
