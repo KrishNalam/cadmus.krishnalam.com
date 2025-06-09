@@ -24,6 +24,11 @@ try {
 const app = express()
 const port = 8080
 
+app.use((req, res, next) => {
+    res.setHeader('Permissions-Policy', '')
+    next()
+})
+
 var allowlist = ['http://localhost:5173', 'https://cadmus.krishnalam.com']
 
 const corsOptionsDelegate = (req, callback) => {
