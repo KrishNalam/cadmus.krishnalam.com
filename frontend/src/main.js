@@ -31,6 +31,8 @@ function signIn() {
     })
 }
 
+let currentInterval = null
+
 function populateUsers(allUsers) {
     for (let x of allUsers) {
         const user = document.createElement('div')
@@ -56,6 +58,10 @@ function populateUsers(allUsers) {
             document.getElementById('chatHeader').innerText = user.innerText
             document.getElementById('chatHeader').style.display = 'flex'
             loadMessages(x.name)
+            // Clear previous interval
+            if (currentInterval) clearInterval(currentInterval)
+            // Start a new interval for the selected user
+            currentInterval = setInterval(() => loadMessages(x.name), 30000)
             document.getElementById('send' + x.name).focus()
         })
     }
