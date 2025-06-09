@@ -32,18 +32,7 @@ const corsOptionsDelegate = (req, callback) => {
     callback(null, { origin: isAllowed })
 }
 
-app.use(
-    cors({
-        origin: (origin, callback) => {
-            if (!origin || allowlist.includes(origin)) {
-                callback(null, true)
-            } else {
-                callback(new Error('Not allowed by CORS'))
-            }
-        },
-        credentials: true,
-    })
-)
+app.use(cors(corsOptionsDelegate))
 
 app.use(express.json())
 
