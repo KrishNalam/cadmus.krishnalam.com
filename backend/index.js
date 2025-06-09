@@ -24,10 +24,7 @@ try {
 const app = express()
 const port = 8080
 
-var allowlist = [
-    'http://localhost:5173',
-    'https://cadmus-krishnalam-com.onrender.com',
-]
+var allowlist = ['http://localhost:5173', 'https://cadmus.krishnalam.com']
 
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions
