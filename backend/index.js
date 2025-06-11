@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import helmet from 'helmet'
 import sqlite3 from 'sqlite3'
 import { Sequelize } from 'sequelize'
 import userRoute from './api/routes/userRoute.js'
@@ -35,6 +36,8 @@ const corsOptionsDelegate = (req, callback) => {
 app.use(cors(corsOptionsDelegate))
 
 app.use(express.json())
+
+app.use(helmet())
 
 app.use('/user', userRoute)
 app.use('/chat', chatRoute)
