@@ -10,6 +10,7 @@
         "preview": "vite preview"
     },
     "devDependencies": {
+        "dompurify": "^3.2.6",
         "vite": "^6.0.7"
     },
     "description": "Front end for chat app",
