@@ -36,11 +36,6 @@ app.use(cors(corsOptionsDelegate))
 
 app.use(express.json())
 
-app.use((_req, res, next) => {
-    res.setHeader('Permissions-Policy', '')
-    next()
-})
-
 app.use('/user', userRoute)
 app.use('/chat', chatRoute)
 

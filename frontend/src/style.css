@@ -11,6 +11,10 @@ body {
     font-family: 'Courier New', Courier, monospace;
     color: white;
 }
+/* 
+b {
+    font-weight: bold;
+} */
 
 ::-webkit-scrollbar {
     /*Display stuff*/

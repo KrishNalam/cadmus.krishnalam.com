@@ -17,5 +17,8 @@
     "homepage": "https://github.com/cheatsoft/chat#readme",
     "devDependencies": {
         "concurrently": "^9.1.2"
+    },
+    "dependencies": {
+        "dompurify": "^3.2.6"
     }
 }

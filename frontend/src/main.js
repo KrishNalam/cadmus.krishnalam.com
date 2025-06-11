@@ -1,4 +1,7 @@
 'use strict'
+
+import DOMPurify from 'dompurify'
+
 document.addEventListener('DOMContentLoaded', runAll)
 
 let loggedUser
@@ -86,10 +89,14 @@ function populateMgs(allMsgs) {
         for (let i = 0; i < allMsgs.length; i++) {
             let msg = document.createElement('div')
             if (allMsgs[i].sender === loggedUser) {
-                msg.innerText = allMsgs[i].message
+                msg.innerHTML = DOMPurify.sanitize(allMsgs[i].message, {
+                    ALLOWED_TAGS: ['b', 'i'],
+                })
                 msg.classList.add('sending')
             } else {
-                msg.innerText = allMsgs[i].message
+                msg.innerHTML = DOMPurify.sanitize(allMsgs[i].message, {
+                    ALLOWED_TAGS: ['b', 'i'],
+                })
                 msg.classList.add('receiving')
             }
             document.getElementById('chatHistory').appendChild(msg)
