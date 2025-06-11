@@ -4,7 +4,6 @@ import sqlite3 from 'sqlite3'
 import { Sequelize } from 'sequelize'
 import userRoute from './api/routes/userRoute.js'
 import chatRoute from './api/routes/chatRoute.js'
-import('@dotenvx/dotenvx/config')
 
 new sqlite3.Database('./chatApp.db')
 
@@ -25,7 +24,7 @@ try {
 const app = express()
 const port = 8080
 
-var allowlist = [process.env.LOCAL, process.env.PROD]
+var allowlist = ['http://localhost:5173', 'https://cadmus.krishnalam.com']
 
 const corsOptionsDelegate = (req, callback) => {
     const origin = req.header('Origin')

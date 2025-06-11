@@ -4,7 +4,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "dev": "dotenvx run -- node index.js",
+        "dev": "node index.js",
         "test": "nodemon index.js"
     },
     "repository": {
@@ -19,7 +19,6 @@
     "homepage": "https://github.com/cheatsoft/chat#readme",
     "description": "Back end for chat app",
     "dependencies": {
-        "@dotenvx/dotenvx": "^1.44.2",
         "cors": "^2.8.5",
         "express": "^4.21.2",
         "sequelize": "^6.37.7",
